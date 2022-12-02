@@ -1,6 +1,6 @@
-﻿// Задача 34. Задайте массив заполненный случайными положительными трёхзначными числами. 
-// Напишите программу, которая покажет количество чётных чисел в массиве.
-// [345, 897, 568, 234] -> 2
+﻿// // Задача 34. Задайте массив заполненный случайными положительными трёхзначными числами. 
+// // Напишите программу, которая покажет количество чётных чисел в массиве.
+// // [345, 897, 568, 234] -> 2
 
 Console.WriteLine("Введите размер массива");
 int size = Convert.ToInt32(Console.ReadLine());
@@ -43,9 +43,9 @@ void PrintArray(int[] numbers)
 }
 
 
-// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
-// [3, 7, 23, 12] -> 19
-// [-4, -6, 89, 6] -> 0
+// // Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+// // [3, 7, 23, 12] -> 19
+// // [-4, -6, 89, 6] -> 0
 
 Console.WriteLine("Введите размер массива");
 int size = Convert.ToInt32(Console.ReadLine());
@@ -54,16 +54,13 @@ FillArray(numbers);
 Console.WriteLine("Вот наш массив: ");
 PrintArray(numbers);
 int result = 0;
-Console.WriteLine($"всего {numbers.Length} чисел, сумма нечётных чисел равна {SumUnEvenNumbers(result)}");
+Console.WriteLine($"всего {numbers.Length} чисел, сумма элементов стоящих на нечётных позициях равна {SumUnEvenNumbers(result)}");
 
 int SumUnEvenNumbers(int result)
 {
-    for (int i = 0; i < numbers.Length; i++)
+    for (int i = 0; i < numbers.Length; i+=2)
     {
-        if (numbers[i] % 2 != 0)
-        {
-           result += numbers[i]; 
-        }
+        result += numbers[i];
     }
     return result;
 }
@@ -79,20 +76,31 @@ PrintArray(numbers);
 double min = Int32.MaxValue;
 double max = Int32.MinValue;
 
-for (int z = 0; z < numbers.Length; z++)
+double MaxPosition(double max)
 {
-    if (numbers[z] > max)
+    for(int i = 0; i < numbers.Length; i++)
+    {
+        if(numbers[i] > max)
         {
-            max = numbers[z];
+            max = numbers[i];
         }
-    if (numbers[z] < min)
-        {
-            min = numbers[z];
-        }
+    }
+    return max;
 }
 
-Console.WriteLine($"всего {numbers.Length} чисел. Максимальное значение = {max}, минимальное значение = {min}");
-Console.WriteLine($"Разница между максимальным и минимальным значением = {max - min}");
+double MinPosition(double min)
+{
+    for(int i = 0; i < numbers.Length; i++)
+    {
+        if(numbers[i] < min)
+        {
+            min = numbers[i];
+        }
+    }
+    return min;
+}
+Console.WriteLine($"всего {numbers.Length} чисел. Максимальное значение = {MaxPosition(max)}, минимальное значение = {MinPosition(min)}");
+Console.WriteLine($"Разница между максимальным и минимальным значением = {MaxPosition(max) - MinPosition(min)}");
 
 void FillArray(double[] numbers)
 {
