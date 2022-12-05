@@ -58,7 +58,7 @@ Console.WriteLine($"всего {numbers.Length} чисел, сумма элем�
 
 int SumUnEvenNumbers(int result)
 {
-    for (int i = 0; i < numbers.Length; i+=2)
+    for (int i = 1; i < numbers.Length; i+=2)
     {
         result += numbers[i];
     }
